@@ -1,0 +1,43 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.result-item {
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 0.5px solid rgba(0,0,0,0.06);
+  background: #fff;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+.result-item:hover {
+  background: rgba(15,178,166,0.06);
+}
+
+.result-title {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #111;
+}
+
+.result-sub {
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.results-empty {
+  color: #666;
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  padding: 8px 12px;
+}

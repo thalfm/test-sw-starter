@@ -1,0 +1,34 @@
+/* Garante ocupação total da tela */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Centraliza o conteúdo */
+.wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* centro horizontal */
+  align-items: center;     /* centro vertical */
+  gap: 15px;               /* espaço entre as divs */
+}
+
+/* Estilo das duas divs */
+.box {
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 2px;
+  border: 0.5px solid var(--green-teal);
+  box-shadow: 0 0.5px 1px 0 var(--warm-grey-75);
+}
+
+/* Tamanhos individuais */
+.left {
+  width: 205px;
+  height: 115px;
+}
+
+.right {
+  width: 291px;
+  height: 291px;
+}

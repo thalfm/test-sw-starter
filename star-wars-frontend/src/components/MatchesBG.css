@@ -1,0 +1,15 @@
+.matches-bg {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--matches-bg, #f7f7f7);
+  padding: 12px;
+  border-radius: 4px;
+}
+
+/* Helpful utility sizes if needed */
+.matches-bg.small { padding: 8px; }
+.matches-bg.medium { padding: 12px; }
+.matches-bg.large { padding: 20px; }
+
+/* If the MatchesBG should contain a subtle border or shadow, uncomment/adjust below */
+/* .matches-bg { box-shadow: 0 0.5px 1px rgba(0,0,0,0.06); border: 0.5px solid rgba(0,0,0,0.04); } */

@@ -1,0 +1,10 @@
+.sw-starter {
+  border-radius: 50%;
+  background: var(--green-teal, #0fb2a6);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  user-select: none;
+}
