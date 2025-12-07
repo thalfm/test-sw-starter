@@ -1,61 +1,52 @@
-📘 Star Wars Full-Stack Application
+
+# 📘 **Star Wars Full-Stack Application**
 
 This project is a full-stack application built with:
 
-Laravel (PHP 8.4) — Backend API
-
-Nginx — Web server and reverse proxy
-
-PHP-FPM 8.4 — FastCGI process manager for Laravel
-
-React (Vite) — Frontend application
-
-Docker & Docker Compose — Containerized environment for development
-
-Node 18 — For building the React application
+- **Laravel (PHP 8.4)** — Backend API  
+- **Nginx** — Web server and reverse proxy  
+- **PHP-FPM 8.4** — FastCGI process manager for Laravel  
+- **React (Vite)** — Frontend application  
+- **Docker & Docker Compose** — Containerized environment for development  
+- **Node 18** — For building the React application  
 
 The project is fully containerized and can be run on:
 
-macOS (Intel and Apple Silicon M1/M2/M3)
+- macOS (Intel and Apple Silicon M1/M2/M3)  
+- Linux  
+- Windows (WSL2 recommended)
 
-Linux
+---
 
-Windows (WSL2 recommended)
+# 🚀 **Technologies Used**
 
-🚀 Technologies Used
-Backend (Laravel + PHP-FPM 8.4)
+### **Backend (Laravel + PHP-FPM 8.4)**
+- Laravel framework serving REST endpoints under `/api/*`
+- PHP-FPM 8.4 for efficient request processing
+- Composer for dependency management
+- PDO + MySQL extension enabled
 
-Laravel framework serving REST endpoints under /api/*
+### **Web Server (Nginx)**
+- Serves the Laravel `public/` directory
+- Forwards PHP requests to `backend:9000`
+- Handles URL rewriting via `try_files` directive
 
-PHP-FPM 8.4 for efficient request processing
+### **Frontend (React + Vite)**
+- Built using Node 18 inside Docker
+- Production-ready static build served by Nginx
 
-Composer for dependency management
+### **Docker Architecture**
+- Containers:
+  - `backend` → PHP-FPM + Laravel
+  - `nginx` → Web server for the backend
+  - `frontend` → React app served by Nginx
+- Shared Docker network: `appnet`
 
-Web Server (Nginx)
+---
 
-Forwards PHP requests to backend:9000
+# 📁 **Project Structure**
 
-Handles URL rewriting via try_files directive
-
-Frontend (React + Vite)
-
-Built using Node 18 inside Docker
-
-Production-ready static build served by Nginx
-
-Docker Architecture
-
-Containers:
-
-backend → PHP-FPM + Laravel
-
-nginx → Web server for the backend
-
-frontend → React app served by Nginx
-
-Shared Docker network: appnet
-
-📁 Project Structure
+```
 project-root/
 │
 ├── star-wars-backend/        # Laravel application
@@ -74,88 +65,130 @@ project-root/
 │   └── default.conf          # Nginx config for Laravel
 │
 └── docker-compose.yml        # Multi-container setup
+```
 
-🐳 Running the Application with Docker Compose
+---
+
+# 🐳 **Running the Application with Docker Compose**
 
 Make sure you have:
 
-Docker installed
+- **Docker** installed  
+- **Docker Compose** installed or Docker Desktop (includes Compose)
 
-Docker Compose installed or Docker Desktop (includes Compose)
+---
 
-✅ 1. Build and start all services
+## ✅ **1. Build and start all services**
 
 From the project root:
 
-docker compose build
+```bash
+docker-compose build
+```
 
-docker compose up mysql
+Then:
 
-PS: wait until mysql start
+```bash
+docker-compose up mysql
+```
 
-docker compose up backend
+PS: wait until the mysql to be ready
+
+Then:
+
+```bash
+docker-compose up backend
+```
 
 PS: wait until the migration to be completed
 
-docker compose up
+Then:
+
+```bash
+docker-compose up
+```
 
 Docker will:
 
-Build the PHP-FPM/Laravel backend
+1. Build the **PHP-FPM/Laravel** backend
+2. Build the **Nginx** server for Laravel
+3. Build the **React** frontend (Node build → served by Nginx)
+4. Build the **MySQL** MySql
+5. Build the **Larave Redis** redis
+6. Build the **Larave Queue** Execute Laravel Jobs
+7. Build the **Larave Scheduler** Cron
 
-Build the Nginx server for Laravel
+---
 
-Build the React frontend (Node build → served by Nginx)
+## 🔍 **2. Access the applications**
 
-🔍 2. Access the applications
-Frontend (React UI)
+### **Frontend (React UI)**
+```
 http://localhost:3000
+```
 
-Backend (Laravel API)
+### **Backend (Laravel API)**
+```
 http://localhost:8000/api/people
 http://localhost:8000/api/movies
+```
 
-🔁 3. Stopping the environment
+---
+
+## 🔁 **3. Stopping the environment**
+
+```bash
 docker-compose down
-
+```
 
 To remove volumes (cache, vendor, etc.):
 
+```bash
 docker-compose down -v
+```
 
-⚙️ Development Notes
-Laravel
+---
 
-If you change backend code, the backend container automatically reflects updates due to volume mounting:
+# ⚙️ **Development Notes**
 
+### Laravel
+If you change backend code, the `backend` container automatically reflects updates due to volume mounting:
+
+```
 ./star-wars-backend:/var/www/html
+```
 
-React
-
+### React
 To rebuild the frontend:
 
+```bash
 docker-compose build frontend
+```
 
-Logs
+### Logs
 
 Backend logs:
 
+```bash
 docker logs php-backend
-
+```
 
 Nginx logs:
 
+```bash
 docker logs laravel-nginx
-
+```
 
 Frontend logs:
 
+```bash
 docker logs react-frontend
+```
 
-📌 Environment Requirements
+---
 
-Docker 20+
+# 📌 **Environment Requirements**
 
-Docker Compose 1.29+ or Docker Desktop
-
-At least 4GB RAM recommended for smooth container performance
+- Docker 20+
+- Docker Compose 1.29+ or Docker Desktop
+- At least 4GB RAM recommended for smooth container performance
